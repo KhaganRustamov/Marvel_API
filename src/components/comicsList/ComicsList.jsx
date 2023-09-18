@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
+import useMarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
-import useMarvelService from "../../services/MarvelService";
+
 import "./comicsList.scss";
 
 const ComicsList = () => {
   const [comicsList, setComicsList] = useState([]);
-  const [newItemLoading, setNewItemLoading] = useState(false);
+  const [newItemLoading, setnewItemLoading] = useState(false);
   const [offset, setOffset] = useState(0);
 
   const { loading, error, getAllComics } = useMarvelService();
@@ -16,17 +17,17 @@ const ComicsList = () => {
   }, []);
 
   const onRequest = (offset, initial) => {
-    initial ? setNewItemLoading(false) : setNewItemLoading(true);
+    initial ? setnewItemLoading(false) : setnewItemLoading(true);
     getAllComics(offset).then(onComicsListLoaded);
   };
 
   const onComicsListLoaded = (newComicsList) => {
-    setComicsList((comicsList) => [...comicsList, ...newComicsList]);
-    setNewItemLoading(false);
-    setOffset((offset) => offset + 8);
+    setComicsList([...comicsList, ...newComicsList]);
+    setnewItemLoading(false);
+    setOffset(offset + 8);
   };
 
-  const renderItems = (arr) => {
+  function renderItems(arr) {
     const items = arr.map((item, i) => {
       return (
         <li className="comics__item" key={i}>
@@ -42,10 +43,12 @@ const ComicsList = () => {
         </li>
       );
     });
-    return <ul className="char__grid">{items}</ul>;
-  };
+
+    return <ul className="comics__grid">{items}</ul>;
+  }
 
   const items = renderItems(comicsList);
+
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading && !newItemLoading ? <Spinner /> : null;
 
@@ -55,8 +58,8 @@ const ComicsList = () => {
       {spinner}
       {items}
       <button
-        className="button button__main button__long"
         disabled={newItemLoading}
+        className="button button__main button__long"
         onClick={() => onRequest(offset)}
       >
         <div className="inner">load more</div>
