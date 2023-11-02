@@ -1,4 +1,5 @@
 @import "../../../style/variables.scss";
+@import "../../../style/button.scss";
 
 .single-comic {
   margin-top: 50px;
@@ -9,6 +10,7 @@
   &__img {
     width: 293px;
     height: 450px;
+    border-radius: $radius;
   }
   &__name {
     font-weight: bold;
@@ -26,14 +28,5 @@
     line-height: 32px;
     color: $main-color;
     margin-top: 25px;
-  }
-  &__back {
-    justify-self: end;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 24px;
-    &:hover {
-      color: $main-color;
-    }
   }
 }
