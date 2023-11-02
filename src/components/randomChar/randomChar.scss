@@ -1,10 +1,15 @@
 @import "../../style/variables.scss";
 
 .randomchar {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  align-items: center;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  &__dynamic {
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+    border-radius: $radius;
+    width: 530px;
+    margin-right: 40px;
+  }
   &__block {
     padding: 40px 35px;
     display: grid;
@@ -41,6 +46,8 @@
     padding: 40px 35px;
     background-color: $dark;
     position: relative;
+    border-radius: $radius;
+    width: 530px;
     button {
       margin-top: 13px;
     }

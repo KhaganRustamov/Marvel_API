@@ -3,7 +3,7 @@ import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import useMarvelService from "../../services/MarvelService";
 import "./randomChar.scss";
-import mjolnir from "../../resources/img/mjolnir.png";  
+import mjolnir from "../../resources/img/mjolnir.png";
 
 const RandomChar = () => {
   const [char, setChar] = useState(null);
@@ -29,9 +29,11 @@ const RandomChar = () => {
 
   return (
     <div className="randomchar">
-      {errorMessage}
-      {spinner}
-      {content}
+      <div className="randomchar__dynamic">
+        {errorMessage}
+        {spinner}
+        {content}
+      </div>
       <div className="randomchar__static">
         <p className="randomchar__title">
           Random character for today!
