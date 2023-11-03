@@ -14,7 +14,7 @@ const Page404 = () => {
           textAlign: "center",
           fontWeight: "bold",
           fontSize: "24px",
-          marginTop: "30px",
+          marginTop: "31px",
         }}
         to="/"
       >
