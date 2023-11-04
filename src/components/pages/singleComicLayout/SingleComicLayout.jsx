@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import "./singleComicLayout.scss";
 
 const SingleComicLayout = ({ data }) => {
-  const { title, description, pageCount, thumbnail, language, price, homepage } = data;
+  const {
+    title,
+    description,
+    pageCount,
+    thumbnail,
+    language,
+    price,
+    homepage,
+  } = data;
 
   return (
     <div className="single-comic">
@@ -20,7 +28,7 @@ const SingleComicLayout = ({ data }) => {
         <p className="single-comic__descr">Language: {language}</p>
         <div className="single-comic__price">{price}</div>
         <div className="single-comic__button__homepage">
-          <Link to={homepage} className="button button__main">
+          <Link to={homepage} target="_blank" className="button button__main">
             <div className="inner">Homepage</div>
           </Link>
         </div>
