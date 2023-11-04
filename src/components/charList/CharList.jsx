@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import useMarvelService from "../../services/MarvelService";
+
 import "./charList.scss";
 
-const CharList = (props) => {
+const CharList = () => {
   const [charList, setCharList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(0);
@@ -26,18 +29,8 @@ const CharList = (props) => {
     setOffset((offset) => offset + 9);
   };
 
-  const itemRefs = useRef([]);
-
-  const focusOnItem = (id) => {
-    itemRefs.current.forEach((item) =>
-      item.classList.remove("char__item_selected")
-    );
-    itemRefs.current[id].classList.add("char__item_selected");
-    itemRefs.current[id].focus();
-  };
-
   const renderItems = (arr) => {
-    const items = arr.map((item, i) => {
+    const items = arr.map((item) => {
       let imgStyle = { objectFit: "cover" };
       if (
         item.thumbnail ===
@@ -47,19 +40,12 @@ const CharList = (props) => {
       }
 
       return (
-        <li
-          className="char__item"
-          tabIndex={0}
-          ref={(el) => (itemRefs.current[i] = el)}
-          key={item.id}
-          onClick={() => {
-            props.onCharSelected(item.id);
-            focusOnItem(i);
-          }}
-        >
-          <img src={item.thumbnail} alt={item.name} style={imgStyle} />
-          <div className="char__name">{item.name}</div>
-        </li>
+        <Link Link to={`/characters/${item.id}`}>
+          <li className="char__item" tabIndex={0} key={item.id}>
+            <img src={item.thumbnail} alt={item.name} style={imgStyle} />
+            <div className="char__name">{item.name}</div>
+          </li>
+        </Link>
       );
     });
 

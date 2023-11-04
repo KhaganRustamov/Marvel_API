@@ -13,7 +13,6 @@ const CharInfo = (props) => {
     updateChar();
   }, [props.charId]);
 
-
   const onCharLoaded = (char) => {
     setChar(char);
   };

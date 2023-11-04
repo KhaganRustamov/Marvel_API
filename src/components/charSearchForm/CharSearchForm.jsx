@@ -65,7 +65,7 @@ const CharSearchForm = () => {
       >
         <Form>
           <label className="char__search-label" htmlFor="charName">
-            Or find a character by name:
+            Find a character by name:
           </label>
           <div className="char__search-wrapper">
             <Field

@@ -30,7 +30,7 @@
   }
   &__name {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 29px;
     text-transform: uppercase;
   }
@@ -49,6 +49,7 @@
     position: relative;
     border-radius: $radius;
     width: 530px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     button {
       margin-top: 13px;
     }

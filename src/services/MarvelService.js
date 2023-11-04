@@ -9,7 +9,7 @@ const useMarvelService = () => {
 
   const getAllCharacters = async (offset = _baseOffset) => {
     const res = await request(
-      `${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`
+      `${_apiBase}characters?limit=20&offset=${offset}&${_apiKey}`
     );
     return res.data.results.map(_transformCharacter);
   };
@@ -41,11 +41,19 @@ const useMarvelService = () => {
       id: char.id,
       name: char.name,
       description: char.description
-        ? `${char.description.slice(0, 210)}...`
+        ? `${char.description.slice(0, 190)}...`
+        : "There is no description for this character",
+      fullDescription: char.description
+        ? char.description
         : "There is no description for this character",
       thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
       homepage: char.urls[0].url,
       wiki: char.urls[1].url,
+      info:
+        char.urls && char.urls.length > 2
+          ? char.urls[2].url
+          : "URL not available",
+
       comics: char.comics.items,
     };
   };
