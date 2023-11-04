@@ -25,7 +25,7 @@ const SingleCharacterLayout = ({ data }) => {
             }
             return (
               <li key={i} className="char__comics-item">
-                <Link to={info} className="char__comics-link">
+                <Link to={info} target="_blank" className="char__comics-link">
                   {item.name}
                 </Link>
               </li>

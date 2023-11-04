@@ -22,7 +22,7 @@ const AppHeader = () => {
               Characters
             </NavLink>
           </li>
-          /
+          |
           <li>
             <NavLink
               end

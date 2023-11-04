@@ -9,10 +9,16 @@
   align-items: start;
   &__button {
     margin-top: 30px;
+    &__homepage {
+      margin-top: 30px;
+      a {
+        width: 110px;
+      }
+    }
   }
   &__img {
     width: 293px;
-    height: 450px;
+    height: 390px;
     border-radius: $radius;
   }
   &__name {

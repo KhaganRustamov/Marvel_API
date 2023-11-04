@@ -26,7 +26,7 @@ const useMarvelService = () => {
 
   const getAllComics = async (offset = 0) => {
     const res = await request(
-      `${_apiBase}comics?orderBy=issueNumber&limit=8&offset=${offset}&${_apiKey}`
+      `${_apiBase}comics?orderBy=issueNumber&limit=16&offset=${offset}&${_apiKey}`
     );
     return res.data.results.map(_transformComics);
   };
@@ -47,7 +47,6 @@ const useMarvelService = () => {
         ? char.description
         : "There is no description for this character",
       thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
-      homepage: char.urls[0].url,
       wiki: char.urls[1].url,
       info:
         char.urls && char.urls.length > 2
@@ -60,6 +59,7 @@ const useMarvelService = () => {
 
   const _transformComics = (comics) => {
     return {
+      homepage: comics.urls[0].url,
       id: comics.id,
       title: comics.title,
       description: comics.description || "There is no description",
